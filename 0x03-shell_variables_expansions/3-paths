@@ -1,2 +1,2 @@
 #!/bin/bash
-set -- ${PATH//:/ } && echo $#
+set -- ${PATH//:/ } && printf "%d\n" $#
