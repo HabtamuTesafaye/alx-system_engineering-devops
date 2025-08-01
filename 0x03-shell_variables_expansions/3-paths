@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $((${#PATH//[^:]}/+1))
+set -- ${PATH//:/ } && echo $#
