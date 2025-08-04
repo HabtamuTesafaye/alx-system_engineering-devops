@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $((2#$(echo "$WATER" | tr water 01234)+5#$(echo "$STIR" | tr stir. 01234))) | awk '{n=$1;b="bestchol";r="";while(n>0){r=substr(b,n%8+1,1) r;n=int(n/8)}print r}'
+WATER=$(echo "$WATER" | tr water 01234);STIR=$(echo "$STIR" | tr stir. 01234);water=0;i=0;while [ $i -lt ${#WATER} ]; do water=$(( water*5 + ${WATER:i:1} ));i=$(( i+1 ));done;stir=0;i=0;while [ $i -lt ${#STIR} ]; do stir=$(( stir*5 + ${STIR:i:1} ));i=$(( i+1 ));done;sum=$(( water+stir ));digits=bestchol;r=;[ $sum -eq 0 ] && r=${digits:0:1};while [ $sum -gt 0 ]; do rem=$(( sum%8 ));sum=$(( sum/8 ));r=${digits:rem:1}$r;done;echo $r
