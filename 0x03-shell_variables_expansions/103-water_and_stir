@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "$(( 2#$(echo "$WATER" | tr 'water' '01234') + 5#$(echo "$STIR" | tr 'stir.' '01234') ))" | \
+  awk '{ 
+    n=$1
+    base="bestchol"
+    result=""
+    do {
+      i = n % 8
+      result = substr(base, i+1, 1) result
+      n = int(n / 8)
+    } while (n > 0)
+    print result
+  }'
