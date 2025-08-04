@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $((${#PATH//[^:]}/+1))
+echo $(expr length "$PATH" - length "${PATH//:/}" + 1)
